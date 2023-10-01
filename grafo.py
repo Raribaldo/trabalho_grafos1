@@ -74,16 +74,16 @@ class Grafo:
                 index += 1
             visitados = visitados + vert_comp
             componentes.append({ 
-                "Número de nós": len(vert_comp),
-                "Nós": vert_comp
+                "Numero de nos": len(vert_comp),
+                "Nos": vert_comp
             })
             n_componentes += 1
-        componentes.sort(reverse=True, key=lambda x:x["Número de nós"])
+        componentes.sort(reverse=True, key=lambda x:x["Numero de nos"])
         for componente in componentes:
-            componente["Nós"] = [no + 1 for no in componente["Nós"]]
+            componente["Nos"] = [no + 1 for no in componente["Nos"]]
             
         return{
-            "Número de componentes": n_componentes,
+            "Numero de componentes": n_componentes,
             "Componentes": componentes
         }
     
@@ -94,13 +94,13 @@ class Grafo:
             graus.append(k)
         graus.sort()
         text = {
-            "Número de vértices": self.escolha.n_nodes(),
-            "Número de arestas": self.escolha.n_arestas(),
-            "Grau mínimo": min(graus),
-            "Grau máximo": max(graus),
-            "Grau médio": sum(graus)/(self.escolha.n_nodes()),
+            "Numero de vertices": self.escolha.n_nodes(),
+            "Numero de arestas": self.escolha.n_arestas,
+            "Grau minimo": min(graus),
+            "Grau maximo": max(graus),
+            "Grau medio": sum(graus)/(self.escolha.n_nodes()),
             "Mediana dos graus": graus[(len(graus)//2)],
-            "Informações das componentes conexas": self.comp_conexas()
+            "Informacoes das componentes conexas": self.comp_conexas()
         }
         
         arquivo = open("saida.txt", "w")
