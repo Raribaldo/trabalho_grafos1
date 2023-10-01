@@ -28,3 +28,20 @@ class Grafo:
                 for i in self.escolha.get_arestas(no):
                     pilha.append((i, no, nivel+1))
         return arvore
+    
+    def distancia (self, no1, no2):
+        arvore = self.bfs(no1)
+        if arvore[no2] is None:
+            return None
+        else:
+            return arvore[no2][0]
+        
+    def diametro (self):
+        big_diametro = 0
+        for i in self.escolha.n_nodes():
+            k = self.bfs(i)
+            maior = max([no[0] for no in k if no is not None])
+            if maior > big_diametro:
+                big_diametro = maior
+        return big_diametro
+        
