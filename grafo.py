@@ -1,11 +1,11 @@
 from representacao import ListaAdjacencia, MatrixAdjacencia
 import json
 
-class Grafo:
+class Grafo: # inicia o grafo #
     def __init__ (self, e_matrix, nome_arquivo):
-        arquivo = open(nome_arquivo, "r")
-        n_nodes = arquivo.readline()
-        n_nodes = int(n_nodes)
+        arquivo = open(nome_arquivo, "r") # lê o arquivo #
+        n_nodes = arquivo.readline() # lê linha por linha #
+        n_nodes = int(n_nodes) # lê a primeira linha como um número inteiro #
         arestas = []
         for linha in arquivo:
             strings = linha.split(" ")
@@ -14,9 +14,9 @@ class Grafo:
             arestas.append((m, n))
         arquivo.close()
         graph = (n_nodes, arestas)
-        if e_matrix:
+        if e_matrix: # inicia como matriz se for uma #
             self.escolha = MatrixAdjacencia (n_nodes, arestas)
-        else:
+        else: # inicia como lista de adjcencia se for uma #
             self.escolha = ListaAdjacencia (n_nodes, arestas)
 
     def bfs (self, node):
