@@ -1,5 +1,6 @@
 class ListaAdjacencia:
     def __init__ (self, n_vertices, arestas):
+        self.n_arestas = len(arestas)
         self.nodes = []
         for K in range (n_vertices):
             self.nodes.append([])
@@ -15,6 +16,7 @@ class ListaAdjacencia:
     
 class MatrixAdjacencia:
     def __init__ (self, n_vertices, arestas):
+        self.n_arestas = len(arestas)
         self.nodes = []
         for i in range (n_vertices):
             matrix = []
