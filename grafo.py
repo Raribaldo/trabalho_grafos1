@@ -103,6 +103,6 @@ class Grafo: # inicia o grafo #
             "Informacoes das componentes conexas": self.comp_conexas() # resultado da função de componentes conexas #
         }
         
-        arquivo = open("saida.txt", "w") # cria um arquivo texto #
-        json.dump(text, arquivo) # escreve a saída do grafo no arquivo texto #
-        arquivo.close() # fecha o arquivo #
+arquivo = open("saida.txt", "w") # cria um arquivo texto #
+json.dump(text, arquivo) # escreve a saída do grafo no arquivo texto #
+arquivo.close() # fecha o arquivo #
