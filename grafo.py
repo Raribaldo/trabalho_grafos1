@@ -1,4 +1,5 @@
 from representacao import ListaAdjacencia, MatrixAdjacencia
+import json
 
 class Grafo:
     def __init__ (self, e_matrix, nome_arquivo):
@@ -78,7 +79,10 @@ class Grafo:
             })
             n_componentes += 1
         componentes.sort(reverse=True, key=lambda x:x["Número de nós"])
-        return {
+        for componente in componentes:
+            componente["Nós"] = [no + 1 for no in componente["Nós"]]
+            
+        return{
             "Número de componentes": n_componentes,
             "Componentes": componentes
         }
@@ -91,10 +95,16 @@ class Grafo:
         graus.sort()
         text = {
             "Número de vértices": self.escolha.n_nodes(),
-            "Número de arestas": vaservadcaw,
+            "Número de arestas": self.escolha.n_arestas(),
             "Grau mínimo": min(graus),
             "Grau máximo": max(graus),
             "Grau médio": sum(graus)/(self.escolha.n_nodes()),
             "Mediana dos graus": graus[(len(graus)//2)],
             "Informações das componentes conexas": self.comp_conexas()
         }
+        
+        arquivo = open("saida.txt", "w")
+        json.dump(text, arquivo)
+        arquivo.close()
+
+Grafo(True, "grafo_1.txt").saida()
